@@ -1,15 +1,15 @@
 package program;
 
 import entities.Product;
-import util.UpperCaseName;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class MainComReferenceMethodStatic {
+public class MainComExpressaoLambda {
     public static void main(String[] args) {
         Locale.setDefault(Locale.US);
         List<Product> list = new ArrayList<>();
@@ -26,7 +26,9 @@ public class MainComReferenceMethodStatic {
             list.add(new Product(name, price));
         }
 
-        List<String> names = list.stream().map(Product::upperCaseStatic).collect(Collectors.toList());
+        Function<Product, String> produto = p -> p.getName().toUpperCase();
+
+        List<String> names = list.stream().map(produto).collect(Collectors.toList());
         names.forEach(System.out::println);
 
     }
