@@ -1,13 +1,15 @@
 package program;
+
 import entities.Product;
 import util.UpperCaseName;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class MainComInterfaceFunction {
+public class MainComReferenceMethodStatic {
     public static void main(String[] args) {
         Locale.setDefault(Locale.US);
         List<Product> list = new ArrayList<>();
@@ -24,10 +26,7 @@ public class MainComInterfaceFunction {
             list.add(new Product(name, price));
         }
 
-        /*a função map péga uma coleção de valores e aplica a cada um dos valores da coleção o que está parametrizado
-          entre parentes que nesse caso abaixo é deixar tudo em uppercase
-          foi necessario usar stream() para converter a lista */
-        List<String> names = list.stream().map(new UpperCaseName()).collect(Collectors.toList());
+        List<String> names = list.stream().map(Product::upperCaseStatic).collect(Collectors.toList());
         names.forEach(System.out::println);
 
     }

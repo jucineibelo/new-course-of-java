@@ -9,7 +9,7 @@ import java.util.Scanner;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class MainComExpressaoLambda {
+public class MainComExpressaoLambdaInline {
     public static void main(String[] args) {
         Locale.setDefault(Locale.US);
         List<Product> list = new ArrayList<>();
@@ -26,9 +26,7 @@ public class MainComExpressaoLambda {
             list.add(new Product(name, price));
         }
 
-        Function<Product, String> produto = p -> p.getName().toUpperCase();
-
-        List<String> names = list.stream().map(produto).collect(Collectors.toList());
+        List<String> names = list.stream().map(p -> p.getName().toUpperCase()).collect(Collectors.toList());
         names.forEach(System.out::println);
 
     }
